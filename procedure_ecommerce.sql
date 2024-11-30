@@ -1,4 +1,3 @@
-
 USE ecommerce;
 SHOW TABLES;
 
@@ -10,12 +9,13 @@ SELECT * FROM fornecedor;
 
 EXPLAIN SELECT razão_social FROM fornecedor;
 DESCRIBE SELECT * FROM fornecedor WHERE contato = '11923447312';  
+
 -- Antes do index = filtered 20, rows 5
 -- Depois do index = filtered 100, rows 1
 
 ALTER TABLE fornecedor ADD INDEX index_contato(contato);
 SHOW INDEX FROM fornecedor;
-DROP INDEX index_contato ON fornecedor;
+DROP INDEX index_contato ON fornecedor; -- Índice em contato, pois é um valor único e muito procurado
 
 -- Procedure para gerenciamento de clientes
 DELIMITER //
